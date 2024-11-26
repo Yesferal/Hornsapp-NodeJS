@@ -31,7 +31,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mongoose": "^5.11.12",
     "socket.io": "^4.1.3"
   }
