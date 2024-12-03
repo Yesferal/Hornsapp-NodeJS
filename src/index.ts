@@ -6,6 +6,7 @@ import { Middleware } from './middleware/middleware'
 import * as socketio from 'socket.io'
 import * as http from 'http'
 import * as path from "path"
+import cors from 'cors'
 
 const PORT = process.env.PORT || ''
 const DB_URL = process.env.DB_URL || ''
@@ -20,6 +21,7 @@ mongoose
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 app.use('/concert', middleware.verifyAuthorization, concertRouter)
 app.use('/band', middleware.verifyAuthorization, bandRouter)
 app.use('/venue', middleware.verifyAuthorization, venueRouter)
