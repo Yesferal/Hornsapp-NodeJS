@@ -24,6 +24,7 @@ const BandSchema: Schema = new Schema({
         es: { type: String }
     },
     formerIn: { type: Number },
+    genre: { type: String },
     genres: [{ type: String }],
     concerts: [{ type: Schema.Types.ObjectId, ref: 'Concert', require: true }]
 })
