@@ -44,7 +44,7 @@ export class BandController extends BaseController {
             console.log(item)
             response.json(item)
         } catch (error) {
-            return next(error)
+            return next()
         }
     }
 
@@ -88,7 +88,7 @@ export class BandController extends BaseController {
                 msg: data,
             })
         } catch (error) {
-            return next(error)
+            return next()
         }
     }
 }
