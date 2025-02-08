@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from "mongoose"
-import { concertRouter, bandRouter, venueRouter, stateRouter, reviewRouter } from './routers'
+import { concertRouter, bandRouter, adminBandRouter, venueRouter, stateRouter, reviewRouter } from './routers'
 import { drawerController } from './controllers'
 import { Middleware } from './middleware/middleware'
 import * as socketio from 'socket.io'
@@ -11,8 +11,9 @@ import cors from 'cors'
 const PORT = process.env.PORT || ''
 const DB_URL = process.env.DB_URL || ''
 const SECRET = process.env.SECRET || ''
+const ADMIN_SECRET = process.env.ADMIN_SECRET || ''
 
-var middleware = new Middleware(SECRET)
+var middleware = new Middleware(SECRET, ADMIN_SECRET)
 
 mongoose
     .connect(DB_URL, { useNewUrlParser: true, dbName: 'hornsAppDB', useUnifiedTopology: true })
@@ -23,7 +24,9 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use('/concert', middleware.verifyAuthorization, concertRouter)
+//app.use('/admin_concert', middleware.verifyAdminAuthorization, adminConcertRouter)
 app.use('/band', middleware.verifyAuthorization, bandRouter)
+app.use('/admin_band', middleware.verifyAdminAuthorization, adminBandRouter)
 app.use('/venue', middleware.verifyAuthorization, venueRouter)
 app.use('/review', middleware.verifyAuthorization, reviewRouter)
 app.use('/state', middleware.verifyAuthorization, stateRouter)
