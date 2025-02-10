@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from "mongoose"
-import { concertRouter, bandRouter, adminBandRouter, venueRouter, stateRouter, reviewRouter } from './routers'
+import { concertRouter, adminConcertRouter, bandRouter, adminBandRouter, venueRouter, stateRouter, reviewRouter } from './routers'
 import { drawerController } from './controllers'
 import { Middleware } from './middleware/middleware'
 import * as socketio from 'socket.io'
@@ -24,7 +24,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use('/concert', middleware.verifyAuthorization, concertRouter)
-//app.use('/admin_concert', middleware.verifyAdminAuthorization, adminConcertRouter)
+app.use('/admin_concert', middleware.verifyAdminAuthorization, adminConcertRouter)
 app.use('/band', middleware.verifyAuthorization, bandRouter)
 app.use('/admin_band', middleware.verifyAdminAuthorization, adminBandRouter)
 app.use('/venue', middleware.verifyAuthorization, venueRouter)
