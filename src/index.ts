@@ -24,13 +24,14 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use('/concert', middleware.verifyAuthorization, concertRouter)
-app.use('/admin_concert', middleware.verifyAdminAuthorization, adminConcertRouter)
 app.use('/band', middleware.verifyAuthorization, bandRouter)
-app.use('/admin_band', middleware.verifyAdminAuthorization, adminBandRouter)
 app.use('/venue', middleware.verifyAuthorization, venueRouter)
-app.use('/admin_venue', middleware.verifyAdminAuthorization, adminVenueRouter)
 app.use('/review', middleware.verifyAuthorization, reviewRouter)
-app.use('/state', middleware.verifyAuthorization, stateRouter)
+
+app.use('/admin_concert', middleware.verifyAdminAuthorization, adminConcertRouter)
+app.use('/admin_band', middleware.verifyAdminAuthorization, adminBandRouter)
+app.use('/admin_venue', middleware.verifyAdminAuthorization, adminVenueRouter)
+app.use('/admin_state', middleware.verifyAdminAuthorization, stateRouter)
 
 // Only to keep our free Heroku App alive
 app.get('/heroku', (req, res) => { return res.send('Hello, I am alive') })
