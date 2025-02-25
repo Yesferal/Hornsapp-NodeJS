@@ -17,19 +17,19 @@ interface ITitle {
 }
 
 const ReviewScheme: Schema = new Schema({
-    "views": [{
-        "key": {
+    views: [{
+        key: {
             type: String
         },
-        "title": {
-            "en": { type: String },
-            "es": { type: String }
+        title: {
+            en: { type: String },
+            es: { type: String }
         },
-        "subtitle": {
-            "en": { type: String },
-            "es": { type: String }
+        subtitle: {
+            en: { type: String },
+            es: { type: String }
         },
-        "imageUrl": { type: String }
+        imageUrl: { type: String }
     }]
 })
 

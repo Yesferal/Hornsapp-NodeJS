@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose'
 
 export interface IDrawer extends Document {
     screens: IType[],
@@ -16,24 +16,24 @@ interface ITitle {
 }
 
 const DrawerScheme: Schema = new Schema({
-    "screens": [{
-        "key": {
+    screens: [{
+        key: {
             type: String
         },
-        "title": {
-            "en": { type: String },
-            "es": { type: String }
+        title: {
+            en: { type: String },
+            es: { type: String }
         }
     }],
-    "categories": [{
-        "key": {
+    categories: [{
+        key: {
             type: String
         },
-        "title": {
-            "en": { type: String },
-            "es": { type: String }
+        title: {
+            en: { type: String },
+            es: { type: String }
         }
     }]
 })
 
-export const drawerModel = mongoose.model<IDrawer>('Drawer', DrawerScheme);
+export const drawerModel = mongoose.model<IDrawer>('Drawer', DrawerScheme)

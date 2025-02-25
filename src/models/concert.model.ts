@@ -6,26 +6,29 @@ export interface IConcert extends Document {
 }
 
 const ConcertSchema: Schema = new Schema({
-    name: { type: String, require: true, minlength: 1, maxlength: 100 },
+    name: {
+        en: { type: String, require: true },
+        es: { type: String, require: true }
+    },
     about: {
         en: { type: String },
         es: { type: String }
     },
     dateTime: { type: Date },
-    images: {
-        headliner: { type: String, require: true },
-        poster: { type: String }
-    },
+    posterImage: { type: String, require: true },
     ticketing: {
         name: { type: String },
         url: { type: String }
     },
-    trailer: {
-        image: { type: String },
-        url: { type: String }
-    },
     links: [{
-        name: { type: String },
+        key: {
+            type: String
+        },
+        name: {
+            en: { type: String },
+            es: { type: String }
+        },
+        icon: { type: String },
         url: { type: String }
     }],
     tags: [{ type: String }],

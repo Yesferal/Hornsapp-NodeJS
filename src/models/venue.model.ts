@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose'
 
 export interface IVenue extends Document {
     name: String,
@@ -6,15 +6,18 @@ export interface IVenue extends Document {
 }
 
 const VenueSchema = new Schema({
-    name: { type: String },
-    displayName: {
+    name: {
         en: { type: String },
         es: { type: String }
     },
-    descrption: { type: String, minlength: 1, maxlength: 350 },
+    descrption: {
+        en: { type: String },
+        es: { type: String }
+    },
+    mapSearchName: { type: String },
     latitude: { type: Number },
     longitude: { type: Number },
     imageUrl: { type: String }
 })
 
-export const venueModel = mongoose.model<IVenue>('Venue', VenueSchema);
+export const venueModel = mongoose.model<IVenue>('Venue', VenueSchema)
